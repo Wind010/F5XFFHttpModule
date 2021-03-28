@@ -91,6 +91,24 @@ CF5XFFHttpModule::WriteEventLogMessage(TCHAR *szMsg)
 
 
 //---------------------------------------------------------------------------
+// CXffHttpModule::SetHeader
+//---------------------------------------------------------------------------
+void
+    CXffHttpModule::SetHeaderValue(IHttpRequest* pRequest, TCHAR* pszHeaderValue, TCHAR delim)
+{
+    TCHAR* sep = _tcschr(pszHeaderValue, _T(delim));
+
+    if (NULL != sep)
+    {
+        *sep = _T('\0');
+        pRequest->SetHeader(GetHeaderName(), pszHeaderValue, (USHORT)strlen(pszHeaderValue), true);
+        CXffHttpModule::DebugMessage(_T("(OARS) : Proxy detected in value, removing proxy info and using '%s'\n"), pszHeaderValue);
+        //*sep = _T(delim);
+    }
+}
+
+
+//---------------------------------------------------------------------------
 //  CF5XFFHttpModule::OnAcquireRequestState
 //---------------------------------------------------------------------------
 REQUEST_NOTIFICATION_STATUS

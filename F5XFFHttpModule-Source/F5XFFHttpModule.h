@@ -116,9 +116,12 @@ class CF5XFFHttpModule : public CHttpModule
 	// Internal Methods
 	//-----------------------------------------------------------------------
 	public:
+    void SetHeaderValue(IHttpRequest* pRequest, TCHAR* pszHeaderValue, TCHAR delim);
 		void DebugMessage(TCHAR *szFormat, ...);
 		bool WriteFileLogMessage(TCHAR *szMsg);
 		bool WriteEventLogMessage(TCHAR *szMsg);
+		
+
 
 	//-----------------------------------------------------------------------
 	// CHttpModule methods
