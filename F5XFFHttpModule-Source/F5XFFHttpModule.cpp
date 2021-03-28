@@ -160,7 +160,7 @@ CF5XFFHttpModule::OnBeginRequest(IN IHttpContext *pHttpContext, IN IHttpEventPro
 					}
 
 					// point the header value member at the allocated XFF value.
-          _tcsncpy(m_pszHeaderValue, pszHeaderValue, 64); // ULI Changed
+          _tcsncpy(m_pszHeaderValue, pszHeaderValue, 128); // ULI Changed
           m_pszHeaderValue[_tcslen(pszHeaderValue)] = 0x00; // ULI Added
 				}
 				else
